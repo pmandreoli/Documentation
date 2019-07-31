@@ -1,0 +1,8 @@
+Proxy server,2 Gb,1,20Gb,"443,8080",public
+Identity and Access Manager (IAM),4 Gb,2,40Gb,public
+Infrastructure Manager ,4Gb,2,40Gb,8800,private
+INDIGO Change management database (CMDB),4Gb,2,40Gb,"443,5984,8080,8081",private
+Service Level Agreement Manager (SLAM),2Gb,1,20Gb,"8443,443",public
+INDIGO-DataCloud Orchestrator,4Gb,2,40Gb,"443",private
+Vault and Dashboard,4Gb,2,40gb,"443",public
+Orchestrator,4Gb,2,40Gb,443,private

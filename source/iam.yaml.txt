@@ -1,0 +1,14 @@
+iam_fqdn: ip-90-147-189-68.pa1.garrservices.it
+iam_mysql_root_password: iam_deploy
+iam_organization_name: 'laniakea-elixir-italy'
+iam_logo_url: https://raw.githubusercontent.com/Laniakea-elixir-it/resources/master/logos/elixir_italy_white_background.png
+iam_enable_google_auth: true
+iam_account_linking_disable: true
+iam_ssl_cert_path: "/etc/letsencrypt/live/ip-90-147-189-68.pa1.garrservices.it/fullchain.pem"
+iam_ssl_key_path: "/etc/letsencrypt/live/ip-90-147-189-68.pa1.garrservices.it/privkey.pem"
+iam_mysql_image: "mysql:5.5"
+iam_image: indigoiam/iam-login-service:v1.4.0-latest
+iam_notification_disable: true #if you do not have a relay
+iam_notification_from: 'iam@{{iam_fqdn}}'
+
+

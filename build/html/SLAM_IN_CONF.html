@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SLAM installation and configuration &#8212; Laniakea Openstack installation v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="CMDB and CPR installation and configuration" href="CMDB_IN_CONF.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="slam-installation-and-configuration">
+<h1>SLAM installation and configuration<a class="headerlink" href="#slam-installation-and-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="slam-iam-client-creation">
+<h2>SLAM IAM client creation<a class="headerlink" href="#slam-iam-client-creation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Login in IAM as Admin</p></li>
+<li><p>Click on <em>MitreID Dashboard</em> and then <em>Self-service client registration</em></p></li>
+<li><p>Click on <em>New client</em> and compile the form wit the following paramethers</p></li>
+</ol>
+<p><em>Client name</em> = slam-client</p>
+<p><em>redirect URI</em> = <a class="reference external" href="https:/">https:/</a>/&lt;SLAM_HOSTNAME&gt;:8443/auth</p>
+<p><em>scope:</em></p>
+<ul class="simple">
+<li><p>openid</p></li>
+<li><p>profile</p></li>
+<li><p>email</p></li>
+<li><p>address</p></li>
+<li><p>phone</p></li>
+<li><p>offline_access</p></li>
+</ul>
+<p><em>Grant Types</em></p>
+<ul class="simple">
+<li><p>authorization code</p></li>
+</ul>
+<p><em>Response types</em></p>
+<ul class="simple">
+<li><p>code</p></li>
+</ul>
+<p><em>credentials</em></p>
+<ul class="simple">
+<li><p>client Secret over HTTP Post</p></li>
+</ul>
+<p><em>Public key set</em></p>
+<ul class="simple">
+<li><p>By URI</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>save the client ID and client secret</p></li>
+</ol>
+</div>
+<div class="section" id="setting-up-proxy-role">
+<h2>Setting up PROXY role<a class="headerlink" href="#setting-up-proxy-role" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Create and edit proxy.yaml in <strong>group_vars</strong> that contain all the following variables:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>letsencrypt_email: &#39;email&#39;
+slam_dns_name: &#39;&lt;SLAM_HOSTNAME&gt;&#39;
+slam_mysql_password: &#39;&lt;password&gt;&#39;
+slam_mysql_root_password: &#39;&lt;password&gt;&#39;
+slam_iam_url: &#39;https://&lt;IAM_HOSTNAME&gt;&#39;
+slam_iam_client_id: &#39;&lt;slam-client-ID&gt;&#39;
+slam_iam_client_secret: &#39;&lt;slam-client-secret&gt;&#39;
+slam_cmdb_url: &#39;https://&lt;proxy_HOSTNAME&gt;&#39;
+slam_keystore_password: &#39;&lt;password&gt;&#39;
+slam_create_keystore: true
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="run-the-role">
+<h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-slam.yml</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="slam-configuration">
+<h2>SLAM configuration<a class="headerlink" href="#slam-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="authorize-slam">
+<h3>Authorize SLAM<a class="headerlink" href="#authorize-slam" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="https:/">https:/</a>/&lt;SLAM_HOSTNAME&gt;:8443/auth it will redirect you to IAM</p></li>
+<li><p>Login as admin</p></li>
+<li><p>Authorize SLAM (Fig.4)</p></li>
+</ol>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/SLAM_approvation.png"><img alt="_images/SLAM_approvation.png" src="_images/SLAM_approvation.png" style="width: 955.5px; height: 478.0px;" /></a>
+</div>
+<p class="centered">
+<strong>Fig.1: SLAM authorization screenshot</strong></p><div class="figure align-center">
+<a class="reference internal image-reference" href="_images/SLAM.png"><img alt="_images/SLAM.png" src="_images/SLAM.png" style="width: 956.0px; height: 478.0px;" /></a>
+</div>
+<p class="centered">
+<strong>Fig.1: SLAM homepage</strong></p></div>
+<div class="section" id="something">
+<h3>something<a class="headerlink" href="#something" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Laniakea Openstack installation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Requirements</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Pre installation tasks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a></li>
+</ul>
+<p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CMDB_IN_CONF.html">CMDB and CPR installation and configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SLAM installation and configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#slam-iam-client-creation">SLAM IAM client creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-proxy-role">Setting up PROXY role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-role">Run the role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slam-configuration">SLAM configuration</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="CMDB_IN_CONF.html" title="previous chapter">CMDB and CPR installation and configuration</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Pietro Mandreoli.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/SLAM_IN_CONF.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,11 @@
+Virtual Machine deployment 
+==============================================
+On the Openstack tenant the virtual machines that will contain the Laniakea INDIGO-dc services has to be created
+ 
+.. csv-table:: **list of the necessary virtual machines and minimum requirement**
+   :header: "Name", "Service", "RAM", "vCPU", "Storage"
+   :widths: 20, 50, 10, 10, 10
+   :file: ./table_VMS.csv
+
+the vm_master will be utilized as control virtual machine from this vm all the services will be installed using Ansible(
+
