@@ -3,6 +3,7 @@ SLAM installation and configuration
 
 SLAM IAM client creation
 ------------------------
+
 1. Login in IAM as Admin
 2. Click on *MitreID Dashboard* and then *Self-service client registration*
 3. Click on *New client* and compile the form wit the following paramethers

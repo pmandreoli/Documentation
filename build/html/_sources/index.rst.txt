@@ -28,6 +28,7 @@ Welcome to Laniakea Openstack installation's documentation!
    IM_IN_CONF
    CMDB_IN_CONF
    SLAM_IN_CONF
+   ORCHESTRATOR_IN_CONF
 
 Indices and tables
 ==================

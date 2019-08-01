@@ -51,6 +51,96 @@ cmdb_oidc_userinfo: https://&lt;proxy_HOSTNAME&gt;/userinfo
 <li><p>run the cpr role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml</span></code></p></li>
 </ul>
 </div>
+<div class="section" id="cmdb-configuration">
+<h2>CMDB configuration<a class="headerlink" href="#cmdb-configuration" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>login in cmdb VM</p></li>
+<li><p>create a directory called <strong>cmdb-data</strong></p></li>
+<li><p>Compile and move in  the following 3 .json files:</p></li>
+</ol>
+<p><em>image.json</em></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;image_id&quot;</span><span class="p">:</span> <span class="s2">&quot;8f667fbc-40bf-45b8-b22d-40f05b48d060&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;image_name&quot;</span><span class="p">:</span> <span class="s2">&quot;RECAS-BARI-ubuntu-16.04&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;architecture&quot;</span><span class="p">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;distribution&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;16.04&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;service-RECAS-BARI-openstack&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>provider.json</em></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;provider-RECAS-BARI&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;RECAS-BARI&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;roc&quot;</span><span class="p">:</span> <span class="s2">&quot;NGI_IT&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;subgrid&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;giis_url&quot;</span><span class="p">:</span> <span class="s2">&quot;ldap://cloud-bdii.recas.ba.infn.it:2170/GLUE2DomainID=RECAS-BARI,o=glue&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;owners&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;marcoantonio.tangaro@ba.infn.it&quot;</span> <span class="p">]</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;provider&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>service.json</em></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;service-RECAS-BARI-openstack&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;service_type&quot;</span><span class="p">:</span> <span class="s2">&quot;eu.egi.cloud.vm-management.openstack&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cloud.recas.ba.infn.it:5000/v3&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;provider_id&quot;</span><span class="p">:</span> <span class="s2">&quot;provider-RECAS-BARI&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;recas-cloud&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;sitename&quot;</span><span class="p">:</span> <span class="s2">&quot;RECAS-BARI&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;cloud.recas.ba.infn.it&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;compute&quot;</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;service&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.</p></li>
+</ol>
+<p><em>cmdb-add-data.sh</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nb">source</span> /etc/cmdb/.cmdbenv
+
+<span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;</span><span class="nv">$CMDB_CRUD_USERNAME</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="nb">echo</span> ENV variable CMDB_USER not <span class="nb">set</span>
+<span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;</span><span class="nv">$CMDB_CRUD_PASSWORD</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="nb">echo</span> ENV variable CMDB_PASSWORD not <span class="nb">set</span>
+<span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&quot;</span>
+<span class="s2">usage: </span><span class="nv">$0</span><span class="s2"> &lt;json&gt;</span>
+<span class="s2">&quot;</span>
+<span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+curl -X POST http://<span class="nv">$CMDB_CRUD_USERNAME</span>:<span class="nv">$CMDB_CRUD_PASSWORD</span>@localhost:5984/indigo-cmdb-v2 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> -d@<span class="nv">$1</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Control on couchDB if your configuration has been uploaded accessing it from browser.</p></li>
+</ol>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/cmdb_config.png"><img alt="_images/cmdb_config.png" src="_images/cmdb_config.png" style="width: 935.5px; height: 479.0px;" /></a>
+</div>
+<p class="centered">
+<strong>couchDB after configuration process, containing image, provider and service</strong></p></div>
 </div>
 
 
@@ -87,9 +177,11 @@ cmdb_oidc_userinfo: https://&lt;proxy_HOSTNAME&gt;/userinfo
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CMDB and CPR installation and configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-cmdb-role">Setting up CMDB role</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#run-the-role">Run the role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cmdb-configuration">CMDB configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ORCHESTRATOR_IN_CONF.html">Orchestrator installation and configuration</a></li>
 </ul>
 
 <div class="relations">

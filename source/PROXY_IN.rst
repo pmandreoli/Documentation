@@ -21,5 +21,5 @@ Run the role
 
 run the role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-proxy.yml``
 
-
+.. comment:: tabella con endpoint
 
