@@ -36,13 +36,13 @@ CMDB configuration
   {
      "type": "image",
      "data": {
-         "image_id": "8f667fbc-40bf-45b8-b22d-40f05b48d060",
-         "image_name": "RECAS-BARI-ubuntu-16.04",
-         "architecture": "x86_64",
+         "image_id": "",
+         "image_name": "",
+         "architecture": "",
          "type": "linux",
          "distribution": "ubuntu",
          "version": "16.04",
-         "service": "service-RECAS-BARI-openstack"
+         "service": ""
      }
   }
   
@@ -52,15 +52,15 @@ CMDB configuration
 .. code:: json
     
    {
-      "_id": "provider-RECAS-BARI",
+      "_id": "",
       "data": {
-          "name": "RECAS-BARI",
-          "country": "Italy",
-          "country_code": "IT",
-          "roc": "NGI_IT",
+          "name": "",
+          "country": "",
+          "country_code": "",
+          "roc": "",
           "subgrid": "",
-          "giis_url": "ldap://cloud-bdii.recas.ba.infn.it:2170/GLUE2DomainID=RECAS-BARI,o=glue",
-          "owners": [ "marcoantonio.tangaro@ba.infn.it" ]
+          "giis_url": "",
+          "owners": [ "" ]
       },
       "type": "provider"
    }
@@ -71,14 +71,14 @@ CMDB configuration
 .. code:: json
 
    {
-      "_id": "service-RECAS-BARI-openstack",
+      "_id": "",
       "data": {
-          "service_type": "eu.egi.cloud.vm-management.openstack",
-          "endpoint": "https://cloud.recas.ba.infn.it:5000/v3",
-          "provider_id": "provider-RECAS-BARI",
-          "region": "recas-cloud",
-          "sitename": "RECAS-BARI",
-          "hostname": "cloud.recas.ba.infn.it",
+          "service_type": "",
+          "endpoint": "",
+          "provider_id": "",
+          "region": "",
+          "sitename": "",
+          "hostname": "",
           "type": "compute"
       },
       "type": "service"
@@ -124,4 +124,4 @@ CMDB configuration
 .. centered:: couchDB after configuration process, containing image, provider and service       
        
        
-       
+
