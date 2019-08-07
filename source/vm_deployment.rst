@@ -16,13 +16,14 @@ Default caracteristic:
 
 * SO = Ubuntu 16.04
 * Open ports = 22,80  
- 
-.. csv-table:: **list of the necessary virtual machines and minimum requirement**
+
+.. centered:: necessary virtual machines complete with minimum requirements for the installation of Laniakea service
+
+.. csv-table::
    :header: "Service", "RAM", "vCPU", "Storage", "open ports", "net"
    :widths: auto
    :file: ./table_VMS.csv
 
-.. centered:: Table.1: necessary virtual machines for the installation of Laniakea service
 
 
 .. note:: The vm_master, as well as hosting the proxy server, will be utilized as control virtual machine from this vm all the services will be installed using `Ansible <https://www.ansible.com/>`_

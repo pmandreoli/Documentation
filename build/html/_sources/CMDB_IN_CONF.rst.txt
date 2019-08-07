@@ -4,7 +4,7 @@ CMDB and CPR installation and configuration
 Setting up CMDB role
 --------------------
 
-1. Create and edit cmdb.yaml in **group_vars** that contain all the following variables:
+1. Create and edit cmdb.yaml in **group_vars** that contain the following variables:
 
 .. highlight:: none
 

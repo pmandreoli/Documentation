@@ -66,7 +66,7 @@ Distribute SSH
 
 Distribute ssh.pub in `/root/.ssh/authorized_keys` all the services virtual machine in order to execute indigopaas-deploy roles
 
-.. warning:: the roles install all the services over HTTPS protocol using LetSencrypt certificates
+.. warning:: The roles install all the services over HTTPS protocol using LetSencrypt certificates
 
 
 
