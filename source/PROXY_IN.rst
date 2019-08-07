@@ -19,7 +19,12 @@ Setting up PROXY role
 Run the role
 ------------
 
-run the role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-proxy.yml``
+Run the role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-proxy.yml``
 
-.. comment:: tabella con endpoint
+Services end-points
+-------------------
+.. csv-table:: **Services end-points**
+   :header: "Service", "end-point"
+   :widths: auto
+   :file: ./end_point.csv
 

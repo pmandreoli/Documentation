@@ -17,8 +17,6 @@ Enable Google Authentication
    1.6 Authorized redirect URIs: https://<IAM_VM_HOSTNAME>/openid_connect_login
 
    1.7 Copy client ID and client secret
-   
-|
 
 Setting up IAM role
 -------------------
@@ -47,7 +45,7 @@ Setting up IAM role
 
 Run the role
 ------------
-run the role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-iam.yml``
+Run the role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-iam.yml``
 
 **deploy-iam.yml**
 
@@ -87,7 +85,7 @@ Test 1: login as admin
 ^^^^^^^^^^^^^^^^^^^^^^
 
 1. Login as admin *username: admin password: password*
-2. change default password
+2. Change default password
 
 Test 2: register a new user
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,7 +104,7 @@ Test 3: register using Google account (optional)
 
 Create IAM Client
 -----------------
-1. Login as Admin
+1. Login as non-Admin user
 2. Click on *MitreID Dashboard* and then *Self-service client registration*
 3. Click on *New client* and compile the form wit the following paramethers
 

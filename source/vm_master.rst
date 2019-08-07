@@ -1,24 +1,23 @@
-configure the control machine
+Configure the control machine
 =============================
 
-In order to install every indigo software using the Ansible roles made avaiable by INDIGO the vm_master Ansible need to be installed and configured.
-
-
+In order to install every indigo software using the Ansible roles made avaiable by INDIGO, Ansible need to be installed and configured on the control machine.
 
 Ansible installation
-####################
+--------------------
 
 `Install Ansible <https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html>`_
 
-Minimum version 2.1.2.0 recommended  2.8.3
+**Minimum version 2.1.2.0**
+**Recommended  2.8.3**
 
 Ansible configuration
-#####################
+---------------------
 
-the inventory file has to be populated wit the IP of the virtual machines tagged by name.
+The inventory file has to be populated wit the IP of the virtual machines tagged by name.
  
 
-**1.** **inventory example**
+**1.** **Inventory example**
 
 .. code:: bash
 
@@ -54,10 +53,20 @@ the inventory file has to be populated wit the IP of the virtual machines tagged
 
 
 |        group_vars/
-|        ├── cmdb.yml
-|        ├── im.yaml
-|        ├── proxy.yml
-|        └── slam.yaml
+|         ├── cmdb.yml
+|         ├── iam.yaml
+|         ├── im.yaml
+|         ├── orchestrator.yaml
+|         ├── proxy.yaml
+|         └── slam.yaml
 
 
-.. metti anche che i playbook installano i componenti su HTTPS usando LetSencrypt   
+Distribute SSH 
+##############
+
+Distribute ssh.pub in `/root/.ssh/authorized_keys` all the services virtual machine in order to execute indigopaas-deploy roles
+
+.. warning:: The roles install all the services over HTTPS protocol using LetSencrypt certificates
+
+
+

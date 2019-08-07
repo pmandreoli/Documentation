@@ -15,7 +15,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Proxy installation" href="PROXY_IN.html" />
-    <link rel="prev" title="configure the control machine" href="vm_master.html" />
+    <link rel="prev" title="Configure the control machine" href="vm_master.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -46,9 +46,6 @@
 <p>1.7 Copy client ID and client secret</p>
 </li>
 </ol>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </div>
 <div class="section" id="setting-up-iam-role">
 <h2>Setting up IAM role<a class="headerlink" href="#setting-up-iam-role" title="Permalink to this headline">¶</a></h2>
@@ -72,7 +69,7 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 </div>
 <div class="section" id="run-the-role">
 <h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
-<p>run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-iam.yml</span></code></p>
+<p>Run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-iam.yml</span></code></p>
 <p><strong>deploy-iam.yml</strong></p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deploy IAM service</span>
@@ -104,7 +101,7 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 <h3>Test 1: login as admin<a class="headerlink" href="#test-1-login-as-admin" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Login as admin <em>username: admin password: password</em></p></li>
-<li><p>change default password</p></li>
+<li><p>Change default password</p></li>
 </ol>
 </div>
 <div class="section" id="test-2-register-a-new-user">
@@ -128,7 +125,7 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 <div class="section" id="create-iam-client">
 <h2>Create IAM Client<a class="headerlink" href="#create-iam-client" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Login as Admin</p></li>
+<li><p>Login as non-Admin user</p></li>
 <li><p>Click on <em>MitreID Dashboard</em> and then <em>Self-service client registration</em></p></li>
 <li><p>Click on <em>New client</em> and compile the form wit the following paramethers</p></li>
 </ol>
@@ -209,14 +206,10 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Pre installation tasks</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
 </ul>
 <p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
 <ul class="current">
@@ -239,7 +232,7 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="vm_master.html" title="previous chapter">configure the control machine</a></li>
+      <li>Previous: <a href="vm_master.html" title="previous chapter">Configure the control machine</a></li>
       <li>Next: <a href="PROXY_IN.html" title="next chapter">Proxy installation</a></li>
   </ul></li>
 </ul>

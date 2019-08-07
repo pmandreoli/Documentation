@@ -37,7 +37,7 @@
 <div class="section" id="slam-iam-client-creation">
 <h2>SLAM IAM client creation<a class="headerlink" href="#slam-iam-client-creation" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Login in IAM as Admin</p></li>
+<li><p>Login in IAM as non-Admin user</p></li>
 <li><p>Click on <em>MitreID Dashboard</em> and then <em>Self-service client registration</em></p></li>
 <li><p>Click on <em>New client</em> and compile the form wit the following paramethers</p></li>
 </ol>
@@ -72,8 +72,8 @@
 <li><p>save the client ID and client secret</p></li>
 </ol>
 </div>
-<div class="section" id="setting-up-proxy-role">
-<h2>Setting up PROXY role<a class="headerlink" href="#setting-up-proxy-role" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-up-slam-role">
+<h2>Setting up SLAM role<a class="headerlink" href="#setting-up-slam-role" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Create and edit proxy.yaml in <strong>group_vars</strong> that contain all the following variables:</p></li>
 </ol>
@@ -95,7 +95,7 @@ slam_create_keystore: true
 <div class="section" id="run-the-role">
 <h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-slam.yml</span></code></p></li>
+<li><p>Run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-slam.yml</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="slam-configuration">
@@ -116,9 +116,14 @@ slam_create_keystore: true
 </div>
 <p class="centered">
 <strong>Fig.1: SLAM homepage</strong></p></div>
-<div class="section" id="something">
-<h3>something<a class="headerlink" href="#something" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="negotiate-resources">
+<h3>Negotiate resources<a class="headerlink" href="#negotiate-resources" title="Permalink to this headline">¶</a></h3>
+<p>Resources con be negotiated trought SLAM dashboard creating new <strong>computing and storage SLA</strong> filling the module.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/slam_configuration.png"><img alt="_images/slam_configuration.png" src="_images/slam_configuration.png" style="width: 934.0px; height: 472.5px;" /></a>
 </div>
+<p class="centered">
+<strong>Fig.2: SLAM Creating new SLA</strong></p></div>
 </div>
 </div>
 
@@ -139,16 +144,10 @@ slam_create_keystore: true
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Pre installation tasks</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
 </ul>
-<p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
@@ -156,7 +155,7 @@ slam_create_keystore: true
 <li class="toctree-l1"><a class="reference internal" href="CMDB_IN_CONF.html">CMDB and CPR installation and configuration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">SLAM installation and configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#slam-iam-client-creation">SLAM IAM client creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-proxy-role">Setting up PROXY role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-slam-role">Setting up SLAM role</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#run-the-role">Run the role</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#slam-configuration">SLAM configuration</a></li>
 </ul>

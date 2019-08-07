@@ -4,7 +4,7 @@ CMDB and CPR installation and configuration
 Setting up CMDB role
 --------------------
 
-1. Create and edit cmdb.yaml in **group_vars** that contain all the following variables:
+1. Create and edit cmdb.yaml in **group_vars** that contain the following variables:
 
 .. highlight:: none
 
@@ -19,13 +19,13 @@ Setting up CMDB role
 Run the role
 ------------
 
-* run the cmdb role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cmdb.yml``
-* run the cpr role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml``
+* Run the cmdb role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cmdb.yml``
+* Run the cpr role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml``
 
 CMDB configuration
 ------------------
-1. login in cmdb VM
-2. create a directory called **cmdb-data**
+1. Login in cmdb VM
+2. Create a directory called **cmdb-data**
 3. Compile and move in  the following 3 .json files:
 
 *image.json*
@@ -86,7 +86,7 @@ CMDB configuration
      
     
     
-4. run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.
+4. Run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.
 
 *cmdb-add-data.sh*
 

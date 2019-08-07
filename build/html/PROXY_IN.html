@@ -46,7 +46,44 @@ domain_name: &quot;&lt;control machine HOSTNAME&gt;&quot;
 </div>
 <div class="section" id="run-the-role">
 <h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
-<p>run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-proxy.yml</span></code></p>
+<p>Run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-proxy.yml</span></code></p>
+</div>
+<div class="section" id="services-end-points">
+<h2>Services end-points<a class="headerlink" href="#services-end-points" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default" id="id1">
+<caption><span class="caption-text"><strong>Services end-points</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Service</p></th>
+<th class="head"><p>end-point</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IAM</p></td>
+<td><p><a class="reference external" href="https:/">https:/</a>/&lt;IAM_HOSTNAME&gt;/</p></td>
+</tr>
+<tr class="row-odd"><td><p>SLAM</p></td>
+<td><p><a class="reference external" href="https:/">https:/</a>/&lt;SLAM_HOSTNAME&gt;:8443/auth</p></td>
+</tr>
+<tr class="row-even"><td><p>PROXY</p></td>
+<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>CMDB</p></td>
+<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/couch/_utils/database.html?indigo-cmdb-v2</p></td>
+</tr>
+<tr class="row-even"><td><p>IM</p></td>
+<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/im</p></td>
+</tr>
+<tr class="row-odd"><td><p>CPR</p></td>
+<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/cpr</p></td>
+</tr>
+<tr class="row-even"><td><p>ORCHESTRATOR</p></td>
+<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/orchestrator</p></td>
+</tr>
+<tr class="row-odd"><td><p>DASHBOARD</p></td>
+<td><p><a class="reference external" href="https:/">https:/</a>/&lt;DASHBOARD_HOSTNAME&gt;</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -67,14 +104,10 @@ domain_name: &quot;&lt;control machine HOSTNAME&gt;&quot;
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Pre installation tasks</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
 </ul>
 <p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
 <ul class="current">
@@ -82,6 +115,7 @@ domain_name: &quot;&lt;control machine HOSTNAME&gt;&quot;
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Proxy installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-proxy-role">Setting up PROXY role</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#run-the-role">Run the role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#services-end-points">Services end-points</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a></li>

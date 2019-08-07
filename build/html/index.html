@@ -14,7 +14,7 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Requirements" href="Requirements.html" />
+    <link rel="next" title="Virtual Machine deployment" href="vm_deployment.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -33,25 +33,22 @@
             
   <div class="section" id="welcome-to-laniakea-openstack-installation-s-documentation">
 <h1>Welcome to Laniakea Openstack installation’s documentation!<a class="headerlink" href="#welcome-to-laniakea-openstack-installation-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pre-installation-tasks">
+<h2>Pre installation tasks<a class="headerlink" href="#pre-installation-tasks" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Pre installation tasks</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="vm_master.html#ansible-installation">Ansible installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vm_master.html#ansible-configuration">Ansible configuration</a></li>
 </ul>
 </li>
 </ul>
 </div>
+</div>
+<div class="section" id="indigo-paas-component-installation">
+<h2>indigo PaaS component installation<a class="headerlink" href="#indigo-paas-component-installation" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="IAM_IN_CONF.html#enable-google-authentication">Enable Google Authentication</a></li>
@@ -64,6 +61,7 @@
 <li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="PROXY_IN.html#setting-up-proxy-role">Setting up PROXY role</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PROXY_IN.html#run-the-role">Run the role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PROXY_IN.html#services-end-points">Services end-points</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a><ul>
@@ -81,7 +79,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="SLAM_IN_CONF.html#slam-iam-client-creation">SLAM IAM client creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SLAM_IN_CONF.html#setting-up-proxy-role">Setting up PROXY role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SLAM_IN_CONF.html#setting-up-slam-role">Setting up SLAM role</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SLAM_IN_CONF.html#run-the-role">Run the role</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SLAM_IN_CONF.html#slam-configuration">SLAM configuration</a></li>
 </ul>
@@ -95,6 +93,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -123,16 +122,10 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Pre installation tasks</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
 </ul>
-<p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
@@ -146,7 +139,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="Requirements.html" title="next chapter">Requirements</a></li>
+      <li>Next: <a href="vm_deployment.html" title="next chapter">Virtual Machine deployment</a></li>
   </ul></li>
 </ul>
 </div>

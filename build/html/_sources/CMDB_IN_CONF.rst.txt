@@ -19,13 +19,13 @@ Setting up CMDB role
 Run the role
 ------------
 
-* run the cmdb role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cmdb.yml``
-* run the cpr role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml``
+* Run the cmdb role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cmdb.yml``
+* Run the cpr role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml``
 
 CMDB configuration
 ------------------
-1. login in cmdb VM
-2. create a directory called **cmdb-data**
+1. Login in cmdb VM
+2. Create a directory called **cmdb-data**
 3. Compile and move in  the following 3 .json files:
 
 *image.json*
@@ -36,13 +36,13 @@ CMDB configuration
   {
      "type": "image",
      "data": {
-         "image_id": "8f667fbc-40bf-45b8-b22d-40f05b48d060",
-         "image_name": "RECAS-BARI-ubuntu-16.04",
-         "architecture": "x86_64",
+         "image_id": "",
+         "image_name": "",
+         "architecture": "",
          "type": "linux",
          "distribution": "ubuntu",
          "version": "16.04",
-         "service": "service-RECAS-BARI-openstack"
+         "service": ""
      }
   }
   
@@ -52,15 +52,15 @@ CMDB configuration
 .. code:: json
     
    {
-      "_id": "provider-RECAS-BARI",
+      "_id": "",
       "data": {
-          "name": "RECAS-BARI",
-          "country": "Italy",
-          "country_code": "IT",
-          "roc": "NGI_IT",
+          "name": "",
+          "country": "",
+          "country_code": "",
+          "roc": "",
           "subgrid": "",
-          "giis_url": "ldap://cloud-bdii.recas.ba.infn.it:2170/GLUE2DomainID=RECAS-BARI,o=glue",
-          "owners": [ "marcoantonio.tangaro@ba.infn.it" ]
+          "giis_url": "",
+          "owners": [ "" ]
       },
       "type": "provider"
    }
@@ -71,14 +71,14 @@ CMDB configuration
 .. code:: json
 
    {
-      "_id": "service-RECAS-BARI-openstack",
+      "_id": "",
       "data": {
-          "service_type": "eu.egi.cloud.vm-management.openstack",
-          "endpoint": "https://cloud.recas.ba.infn.it:5000/v3",
-          "provider_id": "provider-RECAS-BARI",
-          "region": "recas-cloud",
-          "sitename": "RECAS-BARI",
-          "hostname": "cloud.recas.ba.infn.it",
+          "service_type": "",
+          "endpoint": "",
+          "provider_id": "",
+          "region": "",
+          "sitename": "",
+          "hostname": "",
           "type": "compute"
       },
       "type": "service"
@@ -86,7 +86,7 @@ CMDB configuration
      
     
     
-4. run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.
+4. Run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.
 
 *cmdb-add-data.sh*
 
@@ -124,4 +124,4 @@ CMDB configuration
 .. centered:: couchDB after configuration process, containing image, provider and service       
        
        
-       
+

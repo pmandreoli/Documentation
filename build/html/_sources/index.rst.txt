@@ -6,22 +6,19 @@
 Welcome to Laniakea Openstack installation's documentation!
 ===========================================================
 
+Pre installation tasks
+----------------------
 .. toctree::
    :maxdepth: 2
-   :caption: Requirements
-  
-   Requirements
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Pre installation tasks
 
    vm_deployment
    vm_master
 
+indigo PaaS component installation
+----------------------------------
+
 .. toctree:: 
    :maxdepth: 2
-   :caption: indigo PaaS component installation
 
    IAM_IN_CONF
    PROXY_IN

@@ -4,7 +4,7 @@ SLAM installation and configuration
 SLAM IAM client creation
 ------------------------
 
-1. Login in IAM as Admin
+1. Login in IAM as non-Admin user
 2. Click on *MitreID Dashboard* and then *Self-service client registration*
 3. Click on *New client* and compile the form wit the following paramethers
 
@@ -40,8 +40,8 @@ SLAM IAM client creation
 
 4. save the client ID and client secret
 
-Setting up PROXY role
----------------------
+Setting up SLAM role
+--------------------
 
 1. Create and edit proxy.yaml in **group_vars** that contain all the following variables:
 
@@ -67,7 +67,7 @@ Setting up PROXY role
 Run the role
 ------------
 
-* run the role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-slam.yml``
+* Run the role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-slam.yml``
 
 SLAM configuration
 ------------------
@@ -91,5 +91,14 @@ Authorize SLAM
 
 .. centered:: Fig.1: SLAM homepage
 
-something
-^^^^^^^^^
+Negotiate resources
+^^^^^^^^^^^^^^^^^^^
+
+Resources con be negotiated trought SLAM dashboard creating new **computing and storage SLA** filling the module.
+
+.. figure:: _static/slam_configuration.png
+   :scale: 50%
+   :align: center
+
+.. centered:: Fig.2: SLAM Creating new SLA
+

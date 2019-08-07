@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>configure the control machine &#8212; Laniakea Openstack installation v1.0 documentation</title>
+    <title>Configure the control machine &#8212; Laniakea Openstack installation v1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -33,17 +33,18 @@
           <div class="body" role="main">
             
   <div class="section" id="configure-the-control-machine">
-<h1>configure the control machine<a class="headerlink" href="#configure-the-control-machine" title="Permalink to this headline">¶</a></h1>
-<p>In order to install every indigo software using the Ansible roles made avaiable by INDIGO the vm_master Ansible need to be installed and configured.</p>
+<h1>Configure the control machine<a class="headerlink" href="#configure-the-control-machine" title="Permalink to this headline">¶</a></h1>
+<p>In order to install every indigo software using the Ansible roles made avaiable by INDIGO, Ansible need to be installed and configured on the control machine.</p>
 <div class="section" id="ansible-installation">
 <h2>Ansible installation<a class="headerlink" href="#ansible-installation" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">Install Ansible</a></p>
-<p>Minimum version 2.1.2.0 recommended  2.8.3</p>
+<p><strong>Minimum version 2.1.2.0</strong>
+<strong>Recommended  2.8.3</strong></p>
 </div>
 <div class="section" id="ansible-configuration">
 <h2>Ansible configuration<a class="headerlink" href="#ansible-configuration" title="Permalink to this headline">¶</a></h2>
-<p>the inventory file has to be populated wit the IP of the virtual machines tagged by name.</p>
-<p><strong>1.</strong> <strong>inventory example</strong></p>
+<p>The inventory file has to be populated wit the IP of the virtual machines tagged by name.</p>
+<p><strong>1.</strong> <strong>Inventory example</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>iam<span class="o">]</span>
 &lt;VM_IAM IP&gt;
 
@@ -78,10 +79,22 @@
 </div>
 <div class="line-block">
 <div class="line">group_vars/</div>
+<div class="line-block">
 <div class="line">├── cmdb.yml</div>
+<div class="line">├── iam.yaml</div>
 <div class="line">├── im.yaml</div>
-<div class="line">├── proxy.yml</div>
+<div class="line">├── orchestrator.yaml</div>
+<div class="line">├── proxy.yaml</div>
 <div class="line">└── slam.yaml</div>
+</div>
+</div>
+<div class="section" id="distribute-ssh">
+<h3>Distribute SSH<a class="headerlink" href="#distribute-ssh" title="Permalink to this headline">¶</a></h3>
+<p>Distribute ssh.pub in <cite>/root/.ssh/authorized_keys</cite> all the services virtual machine in order to execute indigopaas-deploy roles</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>the roles install all the services over HTTPS protocol using LetSencrypt certificates</p>
+</div>
 </div>
 </div>
 </div>
@@ -103,14 +116,10 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Pre installation tasks</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">configure the control machine</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configure the control machine</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#ansible-installation">Ansible installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ansible-configuration">Ansible configuration</a></li>
 </ul>

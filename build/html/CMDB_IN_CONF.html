@@ -47,43 +47,43 @@ cmdb_oidc_userinfo: https://&lt;proxy_HOSTNAME&gt;/userinfo
 <div class="section" id="run-the-role">
 <h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>run the cmdb role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cmdb.yml</span></code></p></li>
-<li><p>run the cpr role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml</span></code></p></li>
+<li><p>Run the cmdb role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cmdb.yml</span></code></p></li>
+<li><p>Run the cpr role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="cmdb-configuration">
 <h2>CMDB configuration<a class="headerlink" href="#cmdb-configuration" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>login in cmdb VM</p></li>
-<li><p>create a directory called <strong>cmdb-data</strong></p></li>
+<li><p>Login in cmdb VM</p></li>
+<li><p>Create a directory called <strong>cmdb-data</strong></p></li>
 <li><p>Compile and move in  the following 3 .json files:</p></li>
 </ol>
 <p><em>image.json</em></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;image_id&quot;</span><span class="p">:</span> <span class="s2">&quot;8f667fbc-40bf-45b8-b22d-40f05b48d060&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;image_name&quot;</span><span class="p">:</span> <span class="s2">&quot;RECAS-BARI-ubuntu-16.04&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;architecture&quot;</span><span class="p">:</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;image_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;image_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;architecture&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
        <span class="nt">&quot;distribution&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
        <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;16.04&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;service-RECAS-BARI-openstack&quot;</span>
+       <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><em>provider.json</em></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;provider-RECAS-BARI&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;RECAS-BARI&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Italy&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;roc&quot;</span><span class="p">:</span> <span class="s2">&quot;NGI_IT&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;roc&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
        <span class="nt">&quot;subgrid&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;giis_url&quot;</span><span class="p">:</span> <span class="s2">&quot;ldap://cloud-bdii.recas.ba.infn.it:2170/GLUE2DomainID=RECAS-BARI,o=glue&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;owners&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;marcoantonio.tangaro@ba.infn.it&quot;</span> <span class="p">]</span>
+       <span class="nt">&quot;giis_url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;owners&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">]</span>
    <span class="p">},</span>
    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;provider&quot;</span>
 <span class="p">}</span>
@@ -91,14 +91,14 @@ cmdb_oidc_userinfo: https://&lt;proxy_HOSTNAME&gt;/userinfo
 </div>
 <p><em>service.json</em></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;service-RECAS-BARI-openstack&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
    <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;service_type&quot;</span><span class="p">:</span> <span class="s2">&quot;eu.egi.cloud.vm-management.openstack&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cloud.recas.ba.infn.it:5000/v3&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;provider_id&quot;</span><span class="p">:</span> <span class="s2">&quot;provider-RECAS-BARI&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;recas-cloud&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;sitename&quot;</span><span class="p">:</span> <span class="s2">&quot;RECAS-BARI&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;cloud.recas.ba.infn.it&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;service_type&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;provider_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;sitename&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;compute&quot;</span>
    <span class="p">},</span>
    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;service&quot;</span>
@@ -106,7 +106,7 @@ cmdb_oidc_userinfo: https://&lt;proxy_HOSTNAME&gt;/userinfo
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.</p></li>
+<li><p>Run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.</p></li>
 </ol>
 <p><em>cmdb-add-data.sh</em></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -160,14 +160,10 @@ curl -X POST http://<span class="nv">$CMDB_CRUD_USERNAME</span>:<span class="nv"
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Pre installation tasks</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
 </ul>
 <p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
 <ul class="current">
