@@ -26,6 +26,7 @@ INDIGO PaaS component installation
    CMDB_IN_CONF
    SLAM_IN_CONF
    ORCHESTRATOR_IN_CONF
+   DASHBOARD_IN_CONF
 
 Indices and tables
 ==================

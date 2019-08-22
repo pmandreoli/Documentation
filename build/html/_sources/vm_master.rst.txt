@@ -42,31 +42,34 @@ The inventory file has to be populated wit the IP of the virtual machines tagged
    [orchestrator]
    <VM_ORCHESTRATOR IP>
 
+   [dash]
+   <VM_dashboard IP>
+
 **2.** **Ansible role download**
 
 
 | 2.1. Clone or download the role `indigopaas-deploy <https://github.com/indigo-dc/indigopaas-deploy/tree/devel>`_ devel branch.
 
-| 2.2. Create the variable the directory **group_vars** in ``indigopaas-deploy/ansible/inventory/``. This directory will contain a .yml file containing the compulsory role vars for every component.
+| 2.2. Create the variable the directory **group_vars** in ``indigopaas-deploy/ansible/inventory/``. This directory will contain a .yaml file containing the role vars for every component.
 
 | e.g
 
-
-|        group_vars/
-|         ├── cmdb.yml
-|         ├── iam.yaml
-|         ├── im.yaml
-|         ├── orchestrator.yaml
-|         ├── proxy.yaml
-|         └── slam.yaml
+|          group_vars/
+|          ├── cmdb.yaml
+|          ├── dash.yaml
+|          ├── iam.yaml
+|          ├── im.yaml
+|          ├── orchestrator.yaml
+|          ├── proxy.yaml
+|          └── slam.yaml
 
 
 Distribute SSH 
 ##############
 
-Distribute ssh.pub in `/root/.ssh/authorized_keys` all the services virtual machine in order to execute indigopaas-deploy roles
+In order to execute indigopaas-deploy roles the public ssh key of the private key present in the VM controller has to be copied in `/root/.ssh/authorized_keys` of the virtual machines previously created.
 
-.. warning:: The roles install all the services over HTTPS protocol using LetSencrypt certificates
+.. warning:: The indigopaas-deploy roles install all the services over HTTPS protocol using LetSencrypt certificates
 
 
 

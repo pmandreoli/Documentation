@@ -1,17 +1,26 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>IM installation and configuration &#8212; Laniakea Openstack installation v1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CMDB and CPR installation and configuration" href="CMDB_IN_CONF.html" />
@@ -19,17 +28,15 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
+  </head>
+  <body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="im-installation-and-configuration">
@@ -37,16 +44,16 @@
 <div class="section" id="create-protected-resource-registration-for-im">
 <h2>Create protected resource registration for IM<a class="headerlink" href="#create-protected-resource-registration-for-im" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Login in IAM then <em>MitreID Dashboard</em> and <em>Self-service protected resource registration</em></p></li>
-<li><p><em>New Resource</em></p></li>
-<li><p>Name: <a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">**</span></a></p></li>
-<li><p>leave default and <em>Save</em></p></li>
-<li><p>Save <em>Client ID</em> and <em>Client Secret</em></p></li>
+<li>Login in IAM then <em>MitreID Dashboard</em> and <em>Self-service protected resource registration</em></li>
+<li><em>New Resource</em></li>
+<li>Name: Infrastructure manager</li>
+<li>leave default and <em>Save</em></li>
+<li>Save <em>Client ID</em> and <em>Client Secret</em></li>
 </ol>
 </div>
 <div class="section" id="setting-up-im-role">
 <h2>Setting up IM role<a class="headerlink" href="#setting-up-im-role" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#group vars for reinstallation of IM version
+<div class="highlight-none"><div class="highlight"><pre><span></span>#group vars for reinstallation of IM version
 im_image_version: &lt;version&gt;
 im_mysql_root_password: ********
 im_mysql_password: *********
@@ -60,7 +67,7 @@ im_cfg_ssh_reverse_tunnels: &#39;True&#39;
 <div class="section" id="run-role">
 <h2>Run role<a class="headerlink" href="#run-role" title="Permalink to this headline">¶</a></h2>
 <p>command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ sudo ansible-playbook -i &lt;inventory-path&gt; --private-key &lt;private_key-path&gt; deploy-im.yml
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>~$ sudo ansible-playbook -i &lt;inventory-path&gt; --private-key &lt;private_key-path&gt; deploy-im.yml
 </pre></div>
 </div>
 </div>
@@ -71,46 +78,20 @@ im_cfg_ssh_reverse_tunnels: &#39;True&#39;
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Laniakea Openstack installation</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Pre installation tasks</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a></li>
-</ul>
-<p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">IM installation and configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#create-protected-resource-registration-for-im">Create protected resource registration for IM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-im-role">Setting up IM role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-role">Run role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#im-test">IM Test</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">IM installation and configuration</a><ul>
+<li><a class="reference internal" href="#create-protected-resource-registration-for-im">Create protected resource registration for IM</a></li>
+<li><a class="reference internal" href="#setting-up-im-role">Setting up IM role</a></li>
+<li><a class="reference internal" href="#run-role">Run role</a></li>
+<li><a class="reference internal" href="#im-test">IM Test</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="CMDB_IN_CONF.html">CMDB and CPR installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ORCHESTRATOR_IN_CONF.html">Orchestrator installation and configuration</a></li>
 </ul>
-
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
@@ -120,24 +101,23 @@ im_cfg_ssh_reverse_tunnels: &#39;True&#39;
   </ul></li>
 </ul>
 </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/IM_IN_CONF.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -146,8 +126,8 @@ im_cfg_ssh_reverse_tunnels: &#39;True&#39;
       &copy;2019, Pietro Mandreoli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/IM_IN_CONF.rst.txt"

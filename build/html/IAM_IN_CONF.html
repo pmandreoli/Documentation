@@ -1,17 +1,26 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Identity Access Manager (IAM) installation and configuration &#8212; Laniakea Openstack installation v1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Proxy installation" href="PROXY_IN.html" />
@@ -19,17 +28,15 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
+  </head>
+  <body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="identity-access-manager-iam-installation-and-configuration">
@@ -37,7 +44,7 @@
 <div class="section" id="enable-google-authentication">
 <h2>Enable Google Authentication<a class="headerlink" href="#enable-google-authentication" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p>Access to <a class="reference external" href="https://console.developers.google.com/apis/credentials">Google developers console</a> and create and configure a new credential project.</p>
+<li><p class="first">Access to <a class="reference external" href="https://console.developers.google.com/apis/credentials">Google developers console</a> and create and configure a new credential project.</p>
 <p>1.2 Create Credentials &gt; OAuth Client ID</p>
 <p>1.3 Application Type: Web Application</p>
 <p>1.4 Name: Service Provider (SP) name</p>
@@ -50,9 +57,9 @@
 <div class="section" id="setting-up-iam-role">
 <h2>Setting up IAM role<a class="headerlink" href="#setting-up-iam-role" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Create and edit iam.yaml in <strong>group_vars</strong> that contain all the following variables:</p></li>
+<li>Create and edit iam.yaml in <strong>group_vars</strong> that contain all the following variables:</li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>iam_fqdn: &lt;IAM-VM-HOSTNAME&gt;
+<div class="highlight-none"><div class="highlight"><pre><span></span>iam_fqdn: &lt;IAM-VM-HOSTNAME&gt;
 iam_mysql_root_password: *******
 iam_organization_name: &#39;****&#39;
 iam_logo_url: &lt;logo-url&gt;
@@ -69,25 +76,25 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 </div>
 <div class="section" id="run-the-role">
 <h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
-<p>Run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-iam.yml</span></code></p>
+<p>Run the role using <em>ansible-playbook</em> with input <code class="docutils literal"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-iam.yml</span></code></p>
 <p><strong>deploy-iam.yml</strong></p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deploy IAM service</span>
-  <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">iam</span>
-  <span class="nt">become</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>
-  <span class="nt">gather_facts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="nt">pre_tasks</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Check python is installed</span>
-      <span class="nt">raw</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">test -e /usr/bin/python || (apt -y update &amp;&amp; apt install -y python-minimal)</span>
-      <span class="nt">changed_when</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Gathering Facts</span>
-      <span class="nt">setup</span><span class="p">:</span>
-  <span class="nt">roles</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">iam</span>
+<div class="code yaml highlight-default"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Deploy</span> <span class="n">IAM</span> <span class="n">service</span>
+  <span class="n">hosts</span><span class="p">:</span> <span class="n">iam</span>
+  <span class="n">become</span><span class="p">:</span> <span class="n">yes</span>
+  <span class="n">gather_facts</span><span class="p">:</span> <span class="n">false</span>
+  <span class="n">pre_tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Check</span> <span class="n">python</span> <span class="ow">is</span> <span class="n">installed</span>
+      <span class="n">raw</span><span class="p">:</span>  <span class="n">test</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">||</span> <span class="p">(</span><span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python</span><span class="o">-</span><span class="n">minimal</span><span class="p">)</span>
+      <span class="n">changed_when</span><span class="p">:</span> <span class="n">false</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Gathering</span> <span class="n">Facts</span>
+      <span class="n">setup</span><span class="p">:</span>
+  <span class="n">roles</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">iam</span>
 </pre></div>
 </div>
 <p>command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ sudo ansible-playbook -i &lt;inventory-path&gt; --private-key &lt;private_key-path&gt; deploy-iam.yml
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>~$ sudo ansible-playbook -i &lt;inventory-path&gt; --private-key &lt;private_key-path&gt; deploy-iam.yml
 </pre></div>
 </div>
 <div class="figure align-center">
@@ -100,34 +107,34 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 <div class="section" id="test-1-login-as-admin">
 <h3>Test 1: login as admin<a class="headerlink" href="#test-1-login-as-admin" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Login as admin <em>username: admin password: password</em></p></li>
-<li><p>Change default password</p></li>
+<li>Login as admin <em>username: admin password: password</em></li>
+<li>Change default password</li>
 </ol>
 </div>
 <div class="section" id="test-2-register-a-new-user">
 <h3>Test 2: register a new user<a class="headerlink" href="#test-2-register-a-new-user" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Click Register a new account</p></li>
-<li><p>Compile the form</p></li>
-<li><p>Login as admin and accept the request</p></li>
-<li><p>login as new user</p></li>
+<li>Click Register a new account</li>
+<li>Compile the form</li>
+<li>Login as admin and accept the request</li>
+<li>login as new user</li>
 </ol>
 </div>
 <div class="section" id="test-3-register-using-google-account-optional">
 <h3>Test 3: register using Google account (optional)<a class="headerlink" href="#test-3-register-using-google-account-optional" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>Sign-in with Google</p></li>
-<li><p>Login as admin and accept the request</p></li>
-<li><p>Login with Google</p></li>
+<li>Sign-in with Google</li>
+<li>Login as admin and accept the request</li>
+<li>Login with Google</li>
 </ol>
 </div>
 </div>
 <div class="section" id="create-iam-client">
 <h2>Create IAM Client<a class="headerlink" href="#create-iam-client" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Login as non-Admin user</p></li>
-<li><p>Click on <em>MitreID Dashboard</em> and then <em>Self-service client registration</em></p></li>
-<li><p>Click on <em>New client</em> and compile the form wit the following paramethers</p></li>
+<li>Login as non-Admin user</li>
+<li>Click on <em>MitreID Dashboard</em> and then <em>Self-service client registration</em></li>
+<li>Click on <em>New client</em> and compile the form wit the following paramethers</li>
 </ol>
 <div class="line-block">
 <div class="line"><em>Client name</em> = iam-garr-client</div>
@@ -139,44 +146,44 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 <div class="line"><em>scope:</em></div>
 </div>
 <ul class="simple">
-<li><p>openid</p></li>
-<li><p>profile</p></li>
-<li><p>email</p></li>
-<li><p>address</p></li>
-<li><p>phone</p></li>
-<li><p>offline_access</p></li>
+<li>openid</li>
+<li>profile</li>
+<li>email</li>
+<li>address</li>
+<li>phone</li>
+<li>offline_access</li>
 </ul>
 <div class="line-block">
 <div class="line"><em>Grant Types</em></div>
 </div>
 <ul class="simple">
-<li><p>authorization code</p></li>
-<li><p>refresh</p></li>
+<li>authorization code</li>
+<li>refresh</li>
 </ul>
 <div class="line-block">
 <div class="line"><em>Response types</em></div>
 </div>
 <ul class="simple">
-<li><p>code</p></li>
+<li>code</li>
 </ul>
 <div class="line-block">
 <div class="line"><em>credentials</em></div>
 </div>
 <ul class="simple">
-<li><p>client Secret over HTTP Post</p></li>
+<li>client Secret over HTTP Post</li>
 </ul>
 <div class="line-block">
 <div class="line"><em>Public key set</em></div>
 </div>
 <ul class="simple">
-<li><p>By URI</p></li>
+<li>By URI</li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p>save the client ID and client secret</p></li>
-<li><p>from Manage Clients Re-edit the client and set also in grant types:</p></li>
+<li>save the client ID and client secret</li>
+<li>from Manage Clients Re-edit the client and set also in grant types:</li>
 </ol>
 <ul class="simple">
-<li><p>password</p></li>
+<li>password</li>
 </ul>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="_images/mitre.png"><img alt="_images/mitre.png" src="_images/mitre.png" style="width: 479.5px; height: 236.75px;" /></a>
@@ -191,43 +198,26 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Laniakea Openstack installation</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Pre installation tasks</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
-</ul>
-<p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Identity Access Manager (IAM) installation and configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#enable-google-authentication">Enable Google Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-iam-role">Setting up IAM role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-the-role">Run the role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#iam-test">IAM test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-iam-client">Create IAM Client</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Identity Access Manager (IAM) installation and configuration</a><ul>
+<li><a class="reference internal" href="#enable-google-authentication">Enable Google Authentication</a></li>
+<li><a class="reference internal" href="#setting-up-iam-role">Setting up IAM role</a></li>
+<li><a class="reference internal" href="#run-the-role">Run the role</a></li>
+<li><a class="reference internal" href="#iam-test">IAM test</a><ul>
+<li><a class="reference internal" href="#test-1-login-as-admin">Test 1: login as admin</a></li>
+<li><a class="reference internal" href="#test-2-register-a-new-user">Test 2: register a new user</a></li>
+<li><a class="reference internal" href="#test-3-register-using-google-account-optional">Test 3: register using Google account (optional)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CMDB_IN_CONF.html">CMDB and CPR installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ORCHESTRATOR_IN_CONF.html">Orchestrator installation and configuration</a></li>
+<li><a class="reference internal" href="#create-iam-client">Create IAM Client</a></li>
 </ul>
-
+</li>
+</ul>
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
@@ -237,24 +227,23 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
   </ul></li>
 </ul>
 </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/IAM_IN_CONF.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -263,8 +252,8 @@ iam_google_client_secret: &#39;&lt;google_client_secret&gt;&#39;
       &copy;2019, Pietro Mandreoli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/IAM_IN_CONF.rst.txt"

@@ -1,35 +1,42 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Configure the control machine &#8212; Laniakea Openstack installation v1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Identity Access Manager (IAM) installation and configuration" href="IAM_IN_CONF.html" />
-    <link rel="prev" title="Virtual Machine deployment" href="vm_deployment.html" />
+    <link rel="prev" title="Virtual Machines deployment" href="vm_deployment.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
+  </head>
+  <body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="configure-the-control-machine">
@@ -45,26 +52,29 @@
 <h2>Ansible configuration<a class="headerlink" href="#ansible-configuration" title="Permalink to this headline">¶</a></h2>
 <p>The inventory file has to be populated wit the IP of the virtual machines tagged by name.</p>
 <p><strong>1.</strong> <strong>Inventory example</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>iam<span class="o">]</span>
-&lt;VM_IAM IP&gt;
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">iam</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">VM_IAM</span> <span class="n">IP</span><span class="o">&gt;</span>
 
-<span class="o">[</span>im<span class="o">]</span>
-&lt;VM_IM IP&gt;
+<span class="p">[</span><span class="n">im</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">VM_IM</span> <span class="n">IP</span><span class="o">&gt;</span>
 
-<span class="o">[</span>cmdb<span class="o">]</span>
-&lt;VM_CMDB IP&gt;
+<span class="p">[</span><span class="n">cmdb</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">VM_CMDB</span> <span class="n">IP</span><span class="o">&gt;</span>
 
-<span class="o">[</span>slam<span class="o">]</span>
-&lt;VM_SLAM IP&gt;
+<span class="p">[</span><span class="n">slam</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">VM_SLAM</span> <span class="n">IP</span><span class="o">&gt;</span>
 
-<span class="o">[</span>cpr<span class="o">]</span>
-&lt;VM_CPR IP&gt;
+<span class="p">[</span><span class="n">cpr</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">VM_CPR</span> <span class="n">IP</span><span class="o">&gt;</span>
 
-<span class="o">[</span>proxy<span class="o">]</span>
-&lt;VM_PROXY IP&gt;
+<span class="p">[</span><span class="n">proxy</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">VM_PROXY</span> <span class="n">IP</span><span class="o">&gt;</span>
 
-<span class="o">[</span>orchestrator<span class="o">]</span>
-&lt;VM_ORCHESTRATOR IP&gt;
+<span class="p">[</span><span class="n">orchestrator</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">VM_ORCHESTRATOR</span> <span class="n">IP</span><span class="o">&gt;</span>
+
+<span class="p">[</span><span class="n">dash</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">VM_dashboard</span> <span class="n">IP</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p><strong>2.</strong> <strong>Ansible role download</strong></p>
@@ -72,28 +82,27 @@
 <div class="line">2.1. Clone or download the role <a class="reference external" href="https://github.com/indigo-dc/indigopaas-deploy/tree/devel">indigopaas-deploy</a> devel branch.</div>
 </div>
 <div class="line-block">
-<div class="line">2.2. Create the variable the directory <strong>group_vars</strong> in <code class="docutils literal notranslate"><span class="pre">indigopaas-deploy/ansible/inventory/</span></code>. This directory will contain a .yml file containing the compulsory role vars for every component.</div>
+<div class="line">2.2. Create the variable the directory <strong>group_vars</strong> in <code class="docutils literal"><span class="pre">indigopaas-deploy/ansible/inventory/</span></code>. This directory will contain a .yaml file containing the role vars for every component.</div>
 </div>
 <div class="line-block">
 <div class="line">e.g</div>
 </div>
 <div class="line-block">
 <div class="line">group_vars/</div>
-<div class="line-block">
-<div class="line">├── cmdb.yml</div>
+<div class="line">├── cmdb.yaml</div>
+<div class="line">├── dash.yaml</div>
 <div class="line">├── iam.yaml</div>
 <div class="line">├── im.yaml</div>
 <div class="line">├── orchestrator.yaml</div>
 <div class="line">├── proxy.yaml</div>
 <div class="line">└── slam.yaml</div>
 </div>
-</div>
 <div class="section" id="distribute-ssh">
 <h3>Distribute SSH<a class="headerlink" href="#distribute-ssh" title="Permalink to this headline">¶</a></h3>
-<p>Distribute ssh.pub in <cite>/root/.ssh/authorized_keys</cite> all the services virtual machine in order to execute indigopaas-deploy roles</p>
+<p>In order to execute indigopaas-deploy roles the public ssh key of the private key present in the VM controller has to be copied in <cite>/root/.ssh/authorized_keys</cite> of the virtual machines previously created.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The roles install all the services over HTTPS protocol using LetSencrypt certificates</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">The indigopaas-deploy roles install all the services over HTTPS protocol using LetSencrypt certificates</p>
 </div>
 </div>
 </div>
@@ -101,65 +110,47 @@
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Laniakea Openstack installation</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configure the control machine</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ansible-installation">Ansible installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ansible-configuration">Ansible configuration</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configure the control machine</a><ul>
+<li><a class="reference internal" href="#ansible-installation">Ansible installation</a></li>
+<li><a class="reference internal" href="#ansible-configuration">Ansible configuration</a><ul>
+<li><a class="reference internal" href="#distribute-ssh">Distribute SSH</a></li>
 </ul>
 </li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CMDB_IN_CONF.html">CMDB and CPR installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ORCHESTRATOR_IN_CONF.html">Orchestrator installation and configuration</a></li>
+</li>
 </ul>
-
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="vm_deployment.html" title="previous chapter">Virtual Machine deployment</a></li>
+      <li>Previous: <a href="vm_deployment.html" title="previous chapter">Virtual Machines deployment</a></li>
       <li>Next: <a href="IAM_IN_CONF.html" title="next chapter">Identity Access Manager (IAM) installation and configuration</a></li>
   </ul></li>
 </ul>
 </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/vm_master.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -168,8 +159,8 @@
       &copy;2019, Pietro Mandreoli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/vm_master.rst.txt"

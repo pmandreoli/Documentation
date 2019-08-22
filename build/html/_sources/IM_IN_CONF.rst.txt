@@ -6,7 +6,7 @@ Create protected resource registration for IM
 
 1. Login in IAM then *MitreID Dashboard* and *Self-service protected resource registration*  
 2. *New Resource*
-3. Name: **** 
+3. Name: Infrastructure manager 
 4. leave default and *Save*
 5. Save *Client ID* and *Client Secret*
 

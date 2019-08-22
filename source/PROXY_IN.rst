@@ -6,6 +6,7 @@ Setting up PROXY role
 
 1. Create and edit proxy.yaml in **group_vars** that contain all the following variables:
 
+
    .. highlight:: none
 
 ::
@@ -23,7 +24,10 @@ Run the role using *ansible-playbook* with input ``indigopass-deploy/indigopaas-
 
 Services end-points
 -------------------
-.. csv-table:: **Services end-points**
+
+
+
+.. csv-table:: **Services end-points after the server-proxy installation**
    :header: "Service", "end-point"
    :widths: auto
    :file: ./end_point.csv

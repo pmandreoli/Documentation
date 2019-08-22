@@ -1,17 +1,26 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <title>Virtual Machine deployment &#8212; Laniakea Openstack installation v1.0 documentation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Virtual Machines deployment &#8212; Laniakea Openstack installation v1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Configure the control machine" href="vm_master.html" />
@@ -19,139 +28,118 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
+  </head>
+  <body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
-  <div class="section" id="virtual-machine-deployment">
-<h1>Virtual Machine deployment<a class="headerlink" href="#virtual-machine-deployment" title="Permalink to this headline">¶</a></h1>
-<p>The INDIGO-DataCloud softwares are dockerized and each one run on a specific VM(Fig.1)</p>
+  <div class="section" id="virtual-machines-deployment">
+<h1>Virtual Machines deployment<a class="headerlink" href="#virtual-machines-deployment" title="Permalink to this headline">¶</a></h1>
+<p>Laniakea (Tangaro et al., n.d.) is a software suite, based on the INDIGO-DataCloud middleware that allows the provision of a “Galaxy on-demand” Platform as a Service
+(PaaS) over public or private e-infrastructures.</p>
+<p>The INDIGO-DataCloud softwares that constitute Laniakea service, are dockerized and each one run on a specific VM (Fig.1).
+Exploiting both VMs and Docker container create an additional level of virtualization. This approach allows to have the characteristics of isolation of the Docker container with the security of the VM.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="_images/laniakea_pass_container_VM.png"><img alt="_images/laniakea_pass_container_VM.png" src="_images/laniakea_pass_container_VM.png" style="width: 373.6px; height: 352.0px;" /></a>
 </div>
 <p class="centered">
-<strong>Fig.1: PaaS component architecture scheme</strong></p><p>On the Openstack tenant the virtual machines that will contain the Laniakea INDIGO-DataCloud services has to be created (table.1)
-Default caracteristic:</p>
+<strong>Fig.1: PaaS component architecture scheme</strong></p><p>On the Openstack tenant the virtual machines that will contain the Laniakea INDIGO-DataCloud services has to be created (table.1).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Default caracteristic:</p>
 <ul class="simple">
-<li><p>SO = Ubuntu 16.04</p></li>
-<li><p>Open ports = 22,80</p></li>
+<li>SO = Ubuntu 16.04</li>
+<li>Open ports = 22,80</li>
 </ul>
 <p class="centered">
-<strong>Table.1: necessary virtual machines for the installation of Laniakea service</strong></p><table class="colwidths-auto docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Service</p></th>
-<th class="head"><p>RAM</p></th>
-<th class="head"><p>vCPU</p></th>
-<th class="head"><p>Storage</p></th>
-<th class="head"><p>open ports</p></th>
-<th class="head"><p>net</p></th>
+<strong>List of the necessary virtual machines, completed with minimumun requirements, needed for the installation of Laniakea service</strong></p><table border="1" class="colwidths-auto docutils">
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Service</th>
+<th class="head">RAM</th>
+<th class="head">vCPU</th>
+<th class="head">Storage</th>
+<th class="head">open ports</th>
+<th class="head">net</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Proxy server</p></td>
-<td><p>2 Gb</p></td>
-<td><p>1</p></td>
-<td><p>20Gb</p></td>
-<td><p>443,8080</p></td>
-<td><p>public</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Proxy server</td>
+<td>2 Gb</td>
+<td>1</td>
+<td>20Gb</td>
+<td>443,8080</td>
+<td>public</td>
 </tr>
-<tr class="row-odd"><td><p>Identity and Access Manager (IAM)</p></td>
-<td><p>4 Gb</p></td>
-<td><p>2</p></td>
-<td><p>40Gb</p></td>
-<td><p>443</p></td>
-<td><p>public</p></td>
+<tr class="row-odd"><td>Identity and Access Manager (IAM)</td>
+<td>4 Gb</td>
+<td>2</td>
+<td>40Gb</td>
+<td>443</td>
+<td>public</td>
 </tr>
-<tr class="row-even"><td><p>Infrastructure Manager</p></td>
-<td><p>4Gb</p></td>
-<td><p>2</p></td>
-<td><p>40Gb</p></td>
-<td><p>8800</p></td>
-<td><p>private</p></td>
+<tr class="row-even"><td>Infrastructure Manager</td>
+<td>4Gb</td>
+<td>2</td>
+<td>40Gb</td>
+<td>8800</td>
+<td>private</td>
 </tr>
-<tr class="row-odd"><td><p>INDIGO Change management database (CMDB)</p></td>
-<td><p>4Gb</p></td>
-<td><p>2</p></td>
-<td><p>40Gb</p></td>
-<td><p>443,5984,8080,8081</p></td>
-<td><p>private</p></td>
+<tr class="row-odd"><td>INDIGO Change management database (CMDB)</td>
+<td>4Gb</td>
+<td>2</td>
+<td>40Gb</td>
+<td>443,5984,8080,8081</td>
+<td>private</td>
 </tr>
-<tr class="row-even"><td><p>Service Level Agreement Manager (SLAM)</p></td>
-<td><p>2Gb</p></td>
-<td><p>1</p></td>
-<td><p>20Gb</p></td>
-<td><p>8443,443</p></td>
-<td><p>public</p></td>
+<tr class="row-even"><td>Service Level Agreement Manager (SLAM)</td>
+<td>2Gb</td>
+<td>1</td>
+<td>20Gb</td>
+<td>8443,443</td>
+<td>public</td>
 </tr>
-<tr class="row-odd"><td><p>INDIGO-DataCloud Orchestrator</p></td>
-<td><p>4Gb</p></td>
-<td><p>2</p></td>
-<td><p>40Gb</p></td>
-<td><p>443</p></td>
-<td><p>private</p></td>
+<tr class="row-odd"><td>INDIGO-DataCloud Orchestrator</td>
+<td>4Gb</td>
+<td>2</td>
+<td>40Gb</td>
+<td>443</td>
+<td>private</td>
 </tr>
-<tr class="row-even"><td><p>Vault and Dashboard</p></td>
-<td><p>4Gb</p></td>
-<td><p>2</p></td>
-<td><p>40gb</p></td>
-<td><p>443</p></td>
-<td><p>public</p></td>
+<tr class="row-even"><td>Vault and Dashboard</td>
+<td>4Gb</td>
+<td>2</td>
+<td>40gb</td>
+<td>443</td>
+<td>public</td>
 </tr>
-<tr class="row-odd"><td><p>Orchestrator</p></td>
-<td><p>4Gb</p></td>
-<td><p>2</p></td>
-<td><p>40Gb</p></td>
-<td><p>443</p></td>
-<td><p>private</p></td>
+<tr class="row-odd"><td>Orchestrator</td>
+<td>4Gb</td>
+<td>2</td>
+<td>40Gb</td>
+<td>443</td>
+<td>private</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The vm_master, as well as hosting the proxy server, will be utilized as control virtual machine from this vm all the services will be installed using <a class="reference external" href="https://www.ansible.com/">Ansible</a></p>
+<p class="first admonition-title">Note</p>
+<p class="last">The vm_master, as well as hosting the proxy server, will be utilized as control virtual machine from this vm all the services will be installed using <a class="reference external" href="https://www.ansible.com/">Ansible</a></p>
 </div>
 </div>
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Laniakea Openstack installation</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CMDB_IN_CONF.html">CMDB and CPR installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ORCHESTRATOR_IN_CONF.html">Orchestrator installation and configuration</a></li>
-</ul>
-
-<div class="relations">
+        <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -160,24 +148,23 @@ Default caracteristic:</p>
   </ul></li>
 </ul>
 </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/vm_deployment.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -186,8 +173,8 @@ Default caracteristic:</p>
       &copy;2019, Pietro Mandreoli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/vm_deployment.rst.txt"

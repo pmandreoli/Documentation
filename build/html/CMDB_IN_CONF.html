@@ -1,17 +1,26 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>CMDB and CPR installation and configuration &#8212; Laniakea Openstack installation v1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SLAM installation and configuration" href="SLAM_IN_CONF.html" />
@@ -19,17 +28,15 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
+  </head>
+  <body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="cmdb-and-cpr-installation-and-configuration">
@@ -37,9 +44,9 @@
 <div class="section" id="setting-up-cmdb-role">
 <h2>Setting up CMDB role<a class="headerlink" href="#setting-up-cmdb-role" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Create and edit cmdb.yaml in <strong>group_vars</strong> that contain the following variables:</p></li>
+<li>Create and edit cmdb.yaml in <strong>group_vars</strong> that contain the following variables:</li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cmdb_crud_password: CMDBpassword
+<div class="highlight-none"><div class="highlight"><pre><span></span>cmdb_crud_password: CMDBpassword
 cmdb_oidc_userinfo: https://&lt;proxy_HOSTNAME&gt;/userinfo
 </pre></div>
 </div>
@@ -47,94 +54,94 @@ cmdb_oidc_userinfo: https://&lt;proxy_HOSTNAME&gt;/userinfo
 <div class="section" id="run-the-role">
 <h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Run the cmdb role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cmdb.yml</span></code></p></li>
-<li><p>Run the cpr role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml</span></code></p></li>
+<li>Run the cmdb role using <em>ansible-playbook</em> with input <code class="docutils literal"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cmdb.yml</span></code></li>
+<li>Run the cpr role using <em>ansible-playbook</em> with input <code class="docutils literal"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-cpr.yml</span></code></li>
 </ul>
 </div>
 <div class="section" id="cmdb-configuration">
 <h2>CMDB configuration<a class="headerlink" href="#cmdb-configuration" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Login in cmdb VM</p></li>
-<li><p>Create a directory called <strong>cmdb-data</strong></p></li>
-<li><p>Compile and move in  the following 3 .json files:</p></li>
+<li>Login in cmdb VM</li>
+<li>Create a directory called <strong>cmdb-data</strong></li>
+<li>Compile and move in  the following 3 .json files:</li>
 </ol>
 <p><em>image.json</em></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;image_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;image_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;architecture&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;distribution&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;16.04&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;image_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;image_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;architecture&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;distribution&quot;</span><span class="p">:</span> <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;16.04&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><em>provider.json</em></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;roc&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;subgrid&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;giis_url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;owners&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">]</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;country_code&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;roc&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;subgrid&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;giis_url&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;owners&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;&quot;</span> <span class="p">]</span>
    <span class="p">},</span>
-   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;provider&quot;</span>
+   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;provider&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><em>service.json</em></p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="nt">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-       <span class="nt">&quot;service_type&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;provider_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;sitename&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-       <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;compute&quot;</span>
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;service_type&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;provider_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;sitename&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;compute&quot;</span>
    <span class="p">},</span>
-   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;service&quot;</span>
+   <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;service&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>Run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.</p></li>
+<li>Run the cmdb-add-data.sh in order to add image, provider, service, to CMDB.</li>
 </ol>
 <p><em>cmdb-add-data.sh</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span>#!/bin/bash
 
-<span class="nb">source</span> /etc/cmdb/.cmdbenv
+source /etc/cmdb/.cmdbenv
 
-<span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;</span><span class="nv">$CMDB_CRUD_USERNAME</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<span class="nb">echo</span> ENV variable CMDB_USER not <span class="nb">set</span>
-<span class="nb">exit</span> <span class="m">1</span>
-<span class="k">fi</span>
+if [[ -z &quot;$CMDB_CRUD_USERNAME&quot; ]]; then
+echo ENV variable CMDB_USER not set
+exit 1
+fi
 
-<span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;</span><span class="nv">$CMDB_CRUD_PASSWORD</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<span class="nb">echo</span> ENV variable CMDB_PASSWORD not <span class="nb">set</span>
-<span class="nb">exit</span> <span class="m">1</span>
-<span class="k">fi</span>
+if [[ -z &quot;$CMDB_CRUD_PASSWORD&quot; ]]; then
+echo ENV variable CMDB_PASSWORD not set
+exit 1
+fi
 
-<span class="k">if</span> <span class="o">[[</span> -z <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
-<span class="nb">echo</span> <span class="s2">&quot;</span>
-<span class="s2">usage: </span><span class="nv">$0</span><span class="s2"> &lt;json&gt;</span>
-<span class="s2">&quot;</span>
-<span class="nb">exit</span> <span class="m">1</span>
-<span class="k">fi</span>
+if [[ -z &quot;$1&quot; ]]; then
+echo &quot;
+usage: $0 &lt;json&gt;
+&quot;
+exit 1
+fi
 
-curl -X POST http://<span class="nv">$CMDB_CRUD_USERNAME</span>:<span class="nv">$CMDB_CRUD_PASSWORD</span>@localhost:5984/indigo-cmdb-v2 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> -d@<span class="nv">$1</span>
+curl -X POST http://$CMDB_CRUD_USERNAME:$CMDB_CRUD_PASSWORD@localhost:5984/indigo-cmdb-v2 -H &quot;Content-Type: application/json&quot; -d@$1
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Control on couchDB if your configuration has been uploaded accessing it from browser.</p></li>
+<li>Control on couchDB if your configuration has been uploaded accessing it from browser.</li>
 </ol>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="_images/cmdb_config.png"><img alt="_images/cmdb_config.png" src="_images/cmdb_config.png" style="width: 935.5px; height: 479.0px;" /></a>
@@ -145,39 +152,19 @@ curl -X POST http://<span class="nv">$CMDB_CRUD_USERNAME</span>:<span class="nv"
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Laniakea Openstack installation</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">CMDB and CPR installation and configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-cmdb-role">Setting up CMDB role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-the-role">Run the role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cmdb-configuration">CMDB configuration</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CMDB and CPR installation and configuration</a><ul>
+<li><a class="reference internal" href="#setting-up-cmdb-role">Setting up CMDB role</a></li>
+<li><a class="reference internal" href="#run-the-role">Run the role</a></li>
+<li><a class="reference internal" href="#cmdb-configuration">CMDB configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ORCHESTRATOR_IN_CONF.html">Orchestrator installation and configuration</a></li>
 </ul>
-
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
@@ -187,24 +174,23 @@ curl -X POST http://<span class="nv">$CMDB_CRUD_USERNAME</span>:<span class="nv"
   </ul></li>
 </ul>
 </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/CMDB_IN_CONF.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -213,8 +199,8 @@ curl -X POST http://<span class="nv">$CMDB_CRUD_USERNAME</span>:<span class="nv"
       &copy;2019, Pietro Mandreoli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/CMDB_IN_CONF.rst.txt"

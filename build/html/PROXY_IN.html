@@ -1,17 +1,26 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Proxy installation &#8212; Laniakea Openstack installation v1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="IM installation and configuration" href="IM_IN_CONF.html" />
@@ -19,68 +28,67 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
+  </head>
+  <body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="proxy-installation">
 <h1>Proxy installation<a class="headerlink" href="#proxy-installation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="setting-up-proxy-role">
 <h2>Setting up PROXY role<a class="headerlink" href="#setting-up-proxy-role" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Create and edit proxy.yaml in <strong>group_vars</strong> that contain all the following variables:</p></li>
+<ol class="arabic">
+<li><p class="first">Create and edit proxy.yaml in <strong>group_vars</strong> that contain all the following variables:</p>
+</li>
 </ol>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>letsencrypt_email: &quot;&lt;email&gt;&quot;
+<div class="highlight-none"><div class="highlight"><pre><span></span>letsencrypt_email: &quot;&lt;email&gt;&quot;
 domain_name: &quot;&lt;control machine HOSTNAME&gt;&quot;
 </pre></div>
 </div>
 </div>
 <div class="section" id="run-the-role">
 <h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
-<p>Run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-proxy.yml</span></code></p>
+<p>Run the role using <em>ansible-playbook</em> with input <code class="docutils literal"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-proxy.yml</span></code></p>
 </div>
 <div class="section" id="services-end-points">
 <h2>Services end-points<a class="headerlink" href="#services-end-points" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-auto docutils align-default" id="id1">
-<caption><span class="caption-text"><strong>Services end-points</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<thead>
-<tr class="row-odd"><th class="head"><p>Service</p></th>
-<th class="head"><p>end-point</p></th>
+<table border="1" class="colwidths-auto docutils" id="id1">
+<caption><span class="caption-text"><strong>Services end-points after the server-proxy installation</strong></span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Service</th>
+<th class="head">end-point</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>IAM</p></td>
-<td><p><a class="reference external" href="https:/">https:/</a>/&lt;IAM_HOSTNAME&gt;/</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>IAM</td>
+<td><a class="reference external" href="https:/">https:/</a>/&lt;IAM_HOSTNAME&gt;/</td>
 </tr>
-<tr class="row-odd"><td><p>SLAM</p></td>
-<td><p><a class="reference external" href="https:/">https:/</a>/&lt;SLAM_HOSTNAME&gt;:8443/auth</p></td>
+<tr class="row-odd"><td>SLAM</td>
+<td><a class="reference external" href="https:/">https:/</a>/&lt;SLAM_HOSTNAME&gt;:8443/auth</td>
 </tr>
-<tr class="row-even"><td><p>PROXY</p></td>
-<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;</p></td>
+<tr class="row-even"><td>PROXY</td>
+<td><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;</td>
 </tr>
-<tr class="row-odd"><td><p>CMDB</p></td>
-<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/couch/_utils/database.html?indigo-cmdb-v2</p></td>
+<tr class="row-odd"><td>CMDB</td>
+<td><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/couch/_utils/database.html?indigo-cmdb-v2</td>
 </tr>
-<tr class="row-even"><td><p>IM</p></td>
-<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/im</p></td>
+<tr class="row-even"><td>IM</td>
+<td><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/im</td>
 </tr>
-<tr class="row-odd"><td><p>CPR</p></td>
-<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/cpr</p></td>
+<tr class="row-odd"><td>CPR</td>
+<td><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/cpr</td>
 </tr>
-<tr class="row-even"><td><p>ORCHESTRATOR</p></td>
-<td><p><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/orchestrator</p></td>
+<tr class="row-even"><td>ORCHESTRATOR</td>
+<td><a class="reference external" href="https:/">https:/</a>/&lt;PROXY_HOSTNAME&gt;/orchestrator</td>
 </tr>
-<tr class="row-odd"><td><p>DASHBOARD</p></td>
-<td><p><a class="reference external" href="https:/">https:/</a>/&lt;DASHBOARD_HOSTNAME&gt;</p></td>
+<tr class="row-odd"><td>DASHBOARD</td>
+<td><a class="reference external" href="https:/">https:/</a>/&lt;DASHBOARD_HOSTNAME&gt;</td>
 </tr>
 </tbody>
 </table>
@@ -89,41 +97,19 @@ domain_name: &quot;&lt;control machine HOSTNAME&gt;&quot;
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Laniakea Openstack installation</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Pre installation tasks</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">Configure the control machine</a></li>
-</ul>
-<p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Proxy installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-proxy-role">Setting up PROXY role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-the-role">Run the role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#services-end-points">Services end-points</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Proxy installation</a><ul>
+<li><a class="reference internal" href="#setting-up-proxy-role">Setting up PROXY role</a></li>
+<li><a class="reference internal" href="#run-the-role">Run the role</a></li>
+<li><a class="reference internal" href="#services-end-points">Services end-points</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CMDB_IN_CONF.html">CMDB and CPR installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ORCHESTRATOR_IN_CONF.html">Orchestrator installation and configuration</a></li>
 </ul>
-
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
@@ -133,24 +119,23 @@ domain_name: &quot;&lt;control machine HOSTNAME&gt;&quot;
   </ul></li>
 </ul>
 </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/PROXY_IN.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -159,8 +144,8 @@ domain_name: &quot;&lt;control machine HOSTNAME&gt;&quot;
       &copy;2019, Pietro Mandreoli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/PROXY_IN.rst.txt"

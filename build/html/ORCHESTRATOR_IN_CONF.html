@@ -1,34 +1,42 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Orchestrator installation and configuration &#8212; Laniakea Openstack installation v1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dashboard installation and configuration" href="DASHBOARD_IN_CONF.html" />
     <link rel="prev" title="SLAM installation and configuration" href="SLAM_IN_CONF.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
+  </head>
+  <body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="orchestrator-installation-and-configuration">
@@ -36,56 +44,56 @@
 <div class="section" id="create-protected-resource-registration-for-clues">
 <h2>Create protected resource registration for Clues<a class="headerlink" href="#create-protected-resource-registration-for-clues" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Login in IAM then <em>MitreID Dashboard</em> and <em>Self-service protected resource registration</em></p></li>
-<li><p><em>New Resource</em></p></li>
+<li>Login in IAM then <em>MitreID Dashboard</em> and <em>Self-service protected resource registration</em></li>
+<li><em>New Resource</em></li>
 </ol>
 <p><em>Name: ***</em></p>
 <p><em>scope:</em></p>
 <ul class="simple">
-<li><p>openid</p></li>
-<li><p>profile</p></li>
-<li><p>email</p></li>
-<li><p>address</p></li>
-<li><p>phone</p></li>
-<li><p>offline_access</p></li>
+<li>openid</li>
+<li>profile</li>
+<li>email</li>
+<li>address</li>
+<li>phone</li>
+<li>offline_access</li>
 </ul>
 <ol class="arabic simple" start="3">
-<li><p>Save <em>Client ID</em> and <em>Client Secret</em></p></li>
-<li><p>log out and login with Admin user</p></li>
-<li><p>edit the client and set in Grant types <em>token exange</em> and introspection</p></li>
-<li><p>save and exit</p></li>
+<li>Save <em>Client ID</em> and <em>Client Secret</em></li>
+<li>log out and login with Admin user</li>
+<li>edit the client and set in Grant types <em>token exange</em> and introspection</li>
+<li>save and exit</li>
 </ol>
 </div>
 <div class="section" id="create-protected-resource-registration-for-orchestrator">
 <h2>Create protected resource registration for Orchestrator<a class="headerlink" href="#create-protected-resource-registration-for-orchestrator" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Login in IAM then <em>MitreID Dashboard</em> and <em>Self-service protected resource registration</em></p></li>
-<li><p><em>New Resource</em></p></li>
+<li>Login in IAM then <em>MitreID Dashboard</em> and <em>Self-service protected resource registration</em></li>
+<li><em>New Resource</em></li>
 </ol>
 <p><em>Name: ***</em></p>
 <p><em>scope:</em></p>
 <ul class="simple">
-<li><p>openid</p></li>
-<li><p>profile</p></li>
-<li><p>offline_access</p></li>
+<li>openid</li>
+<li>profile</li>
+<li>offline_access</li>
 </ul>
 <ol class="arabic simple" start="3">
-<li><p>Save <em>Client ID</em> and <em>Client Secret</em></p></li>
-<li><p>log out and login with Admin user</p></li>
-<li><p>edit the client and set in Grant types <em>token exange</em> and introspection</p></li>
-<li><p>save and exit</p></li>
+<li>Save <em>Client ID</em> and <em>Client Secret</em></li>
+<li>log out and login with Admin user</li>
+<li>edit the client and set in Grant types <em>token exange</em> and introspection</li>
+<li>save and exit</li>
 </ol>
 </div>
 <div class="section" id="run-monitor-mock-docker">
 <h2>Run monitor-mock docker<a class="headerlink" href="#run-monitor-mock-docker" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Install <a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">docker-CE</a> on the orchestrator VM</p></li>
-<li><p>run the <a class="reference external" href="https://hub.docker.com/r/marica/monitoring-mock">monitoring-mock docker</a></p></li>
+<li>Install <a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">docker-CE</a> on the orchestrator VM</li>
+<li>run the <a class="reference external" href="https://hub.docker.com/r/marica/monitoring-mock">monitoring-mock docker</a></li>
 </ol>
 </div>
 <div class="section" id="setting-up-orchestrator-role">
 <h2>Setting up Orchestrator role<a class="headerlink" href="#setting-up-orchestrator-role" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>orchestrator_url: http://&lt;PROXY_HOSTNAME&gt;
+<div class="highlight-none"><div class="highlight"><pre><span></span>orchestrator_url: http://&lt;PROXY_HOSTNAME&gt;
 orchestrator_image: indigodatacloud/orchestrator:2.1.2-final
 orchestrator_mysql_root_password: ****
 orchestrator_mysql_password: ****
@@ -106,80 +114,54 @@ orchestrator_custom_types: https://raw.githubusercontent.com/mtangaro/tosca-type
 <div class="section" id="run-the-role">
 <h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>run the role using <em>ansible-playbook</em> with input <code class="docutils literal notranslate"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-slam.yml</span></code></p></li>
+<li>run the role using <em>ansible-playbook</em> with input <code class="docutils literal"><span class="pre">indigopass-deploy/indigopaas-deploy/ansible/playbooks/deploy-slam.yml</span></code></li>
 </ul>
 </div>
 </div>
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Laniakea Openstack installation</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Requirements</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Pre installation tasks</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="vm_deployment.html">Virtual Machine deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vm_master.html">configure the control machine</a></li>
-</ul>
-<p class="caption"><span class="caption-text">indigo PaaS component installation</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="IAM_IN_CONF.html">Identity Access Manager (IAM) installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PROXY_IN.html">Proxy installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="IM_IN_CONF.html">IM installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CMDB_IN_CONF.html">CMDB and CPR installation and configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SLAM_IN_CONF.html">SLAM installation and configuration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Orchestrator installation and configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#create-protected-resource-registration-for-clues">Create protected resource registration for Clues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-protected-resource-registration-for-orchestrator">Create protected resource registration for Orchestrator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-monitor-mock-docker">Run monitor-mock docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-orchestrator-role">Setting up Orchestrator role</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-the-role">Run the role</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Orchestrator installation and configuration</a><ul>
+<li><a class="reference internal" href="#create-protected-resource-registration-for-clues">Create protected resource registration for Clues</a></li>
+<li><a class="reference internal" href="#create-protected-resource-registration-for-orchestrator">Create protected resource registration for Orchestrator</a></li>
+<li><a class="reference internal" href="#run-monitor-mock-docker">Run monitor-mock docker</a></li>
+<li><a class="reference internal" href="#setting-up-orchestrator-role">Setting up Orchestrator role</a></li>
+<li><a class="reference internal" href="#run-the-role">Run the role</a></li>
 </ul>
 </li>
 </ul>
-
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="SLAM_IN_CONF.html" title="previous chapter">SLAM installation and configuration</a></li>
+      <li>Next: <a href="DASHBOARD_IN_CONF.html" title="next chapter">Dashboard installation and configuration</a></li>
   </ul></li>
 </ul>
 </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ORCHESTRATOR_IN_CONF.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
+  <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -188,8 +170,8 @@ orchestrator_custom_types: https://raw.githubusercontent.com/mtangaro/tosca-type
       &copy;2019, Pietro Mandreoli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/ORCHESTRATOR_IN_CONF.rst.txt"

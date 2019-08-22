@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Dashboard installation and configuration &#8212; Laniakea Openstack installation v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Orchestrator installation and configuration" href="ORCHESTRATOR_IN_CONF.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dashboard-installation-and-configuration">
+<h1>Dashboard installation and configuration<a class="headerlink" href="#dashboard-installation-and-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-iam-client-for-dashboard">
+<h2>Create IAM client for Dashboard<a class="headerlink" href="#create-iam-client-for-dashboard" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Login as non-Admin user</li>
+<li>Click on <em>MitreID Dashboard</em> and then <em>Self-service client registration</em></li>
+<li>Click on <em>New client</em> and compile the form wit the following paramethers</li>
+</ol>
+<div class="line-block">
+<div class="line"><em>Client name</em> = dashboard</div>
+</div>
+<div class="line-block">
+<div class="line"><em>redirect URI</em> = <a class="reference external" href="https:/">https:/</a>/&lt;dashboard IP&gt;/login/iam/authorized</div>
+</div>
+<div class="line-block">
+<div class="line"><em>scope:</em></div>
+</div>
+<ul class="simple">
+<li>openid</li>
+<li>profile</li>
+<li>email</li>
+<li>address</li>
+<li>phone</li>
+<li>offline_access</li>
+</ul>
+<div class="line-block">
+<div class="line"><em>Grant Types</em></div>
+</div>
+<ul class="simple">
+<li>authorization code</li>
+</ul>
+<div class="line-block">
+<div class="line"><em>Response types</em></div>
+</div>
+<ul class="simple">
+<li>code</li>
+</ul>
+<div class="line-block">
+<div class="line"><em>credentials</em></div>
+</div>
+<ul class="simple">
+<li>client Secret over HTTP Post</li>
+</ul>
+<div class="line-block">
+<div class="line"><em>Public key set</em></div>
+</div>
+<ul class="simple">
+<li>By URI</li>
+</ul>
+<ol class="arabic simple" start="4">
+<li>Save the client ID and client secret</li>
+<li>Login as admin and from Manage Clients Re-edit the client and set also in tokens:</li>
+</ol>
+<ul class="simple">
+<li>Refresh tokens are issued for this client</li>
+<li>Refresh tokens for this client are re-used</li>
+<li>Active access tokens are automatically revoked when the refresh token is used</li>
+<li>Refresh tokens do not time out</li>
+</ul>
+<ol class="arabic simple" start="6">
+<li>Save</li>
+</ol>
+</div>
+<div class="section" id="setting-up-dashboard-role">
+<h2>Setting up dashboard role<a class="headerlink" href="#setting-up-dashboard-role" title="Permalink to this headline">¶</a></h2>
+<p>Clone the <a class="reference external" href="https://github.com/pmandreoli/ansible-dashboard-role">Ansible dashboard role</a>  into the control machine.</p>
+<p>in group vars edit <strong>dash.yaml</strong> file with the following variable:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>dash_admin_email: &lt;email&gt;
+dash_fqdn: &lt;dashboard_HOSTNAME&gt;
+dest_conf: /etc/orchestrator-dashboard
+dash_image: marica/orchestrator-dashboard:latest
+iam_client_id: ********
+iam_client_secret: ********
+iam_base_url: https://&lt;IAM_HOSTNAME&gt;
+orchestrator_url: https://&lt;ORCHESTRATOR_HOSTNAME&gt;
+slam_url: https://&lt;SLAM_HOSTANAME&gt;
+cmdb_url: https://&lt;PROXY_HOSTANME&gt;
+admins: &lt;Admin_email&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-role">
+<h2>Run the role<a class="headerlink" href="#run-the-role" title="Permalink to this headline">¶</a></h2>
+<p>run <em>deploy_dash.yml</em> with the command <cite>~$sudo ansible-playbook -i &lt;inventory-path&gt; –private-key &lt;private_key-path&gt; deploy-im.yml</cite></p>
+<p><strong>deploy_dash.yml</strong></p>
+<div class="code yaml highlight-default"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Deploy</span> <span class="n">dash</span>
+  <span class="n">hosts</span><span class="p">:</span> <span class="n">dash</span>
+  <span class="n">become</span><span class="p">:</span> <span class="n">yes</span>
+  <span class="n">gather_facts</span><span class="p">:</span> <span class="n">false</span>
+  <span class="n">pre_tasks</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Check</span> <span class="n">python</span> <span class="ow">is</span> <span class="n">installed</span>
+      <span class="n">raw</span><span class="p">:</span>  <span class="n">test</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> <span class="o">||</span> <span class="p">(</span><span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python</span><span class="o">-</span><span class="n">minimal</span><span class="p">)</span>
+      <span class="n">changed_when</span><span class="p">:</span> <span class="n">false</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Gathering</span> <span class="n">Facts</span>
+      <span class="n">setup</span><span class="p">:</span>
+  <span class="n">roles</span><span class="p">:</span>
+    <span class="o">-</span> <span class="p">{</span> <span class="n">role</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">ansible</span><span class="o">-</span><span class="n">dashboard</span><span class="o">-</span><span class="n">role</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/dashboard_homepage.png"><img alt="_images/dashboard_homepage.png" src="_images/dashboard_homepage.png" style="width: 936.5px; height: 477.0px;" /></a>
+</div>
+<p class="centered">
+<strong>Orchestrator dashboard Homepage</strong></p></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Dashboard installation and configuration</a><ul>
+<li><a class="reference internal" href="#create-iam-client-for-dashboard">Create IAM client for Dashboard</a></li>
+<li><a class="reference internal" href="#setting-up-dashboard-role">Setting up dashboard role</a></li>
+<li><a class="reference internal" href="#run-the-role">Run the role</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ORCHESTRATOR_IN_CONF.html" title="previous chapter">Orchestrator installation and configuration</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/DASHBOARD_IN_CONF.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Pietro Mandreoli.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/DASHBOARD_IN_CONF.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
